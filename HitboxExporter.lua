@@ -110,20 +110,19 @@ function Box.new(_TL, _BR, _type) --Types =
 end
 
 function Box.toString(box)
-    return "["..Color.toString(box.type)..Vec2.toString(box.TL)..","..Vec2.toString(box.BR).."]"
+    return Color.toString(box.type)..Vec2.toString(box.TL)..Vec2.toString(box.BR)
 end
 
 function BoxArrayToString(frame)
-    local ret = "{"
+    local ret = ""
     if frame ~= nil then
         for i = 1, #frame do
             ret = ret..Box.toString(frame[i])
             if i ~= #frame then
-                ret = ret..","
+                ret = ret..":"
             end
         end
     end
-    ret = ret.."}"
     return ret
 end
 
@@ -280,16 +279,16 @@ function ExportBoxData()
     for a, tag in ipairs(sprite.tags) do
         --new animation, which is frame data + tag
         local currentFrame = tag.fromFrame
-        local str = tag.name..","
+        local str = tag.name
         while currentFrame ~= tag.toFrame.next do
             local cels = FindCels(currentFrame)
             local hitboxes = FindBoxes(cels[1])
             local hurtboxes =  FindBoxes(cels[2])
             local pushboxes = FindBoxes(cels[3])
-            str = str.."{"..currentFrame.duration.."{HITBOX,".. BoxArrayToString(hitboxes).."}{HURTBOX,"..BoxArrayToString(hurtboxes).."}{PUSHBOX,"..BoxArrayToString(pushboxes).."}}"
+            str = str.."|"..currentFrame.duration.."|".. BoxArrayToString(hitboxes).."|"..BoxArrayToString(hurtboxes).."|"..BoxArrayToString(pushboxes)
             currentFrame = currentFrame.next
         end
-        retString = str.."\n"
+        retString = retString..str.."\n"
     end
 
     return retString
