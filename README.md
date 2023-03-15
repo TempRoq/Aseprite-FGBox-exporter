@@ -4,12 +4,20 @@ Will look for the existence of hitbox, hurtbox, and pushbox layers, parse them f
 
 Example output
 ```
-                                            TL Corner  BR Corner
-Tag   Dur  type                   Color          VV      VV
-
-Idle,{0.25{HITBOX,{}}{HURTBOX,{[[251,242,54,255]<7,0>,<13,5>],[[55,148,110,255]<7,6>,<13,15>],[[63,63,116,255]<7,16>,<13,19>]}}{PUSHBOX,{[[106,190,48,255]<7,4>,<13,19>]}}}
+Idle|0.25||[251,242,54,255]<7,0><13,5>:[55,148,110,255]<7,6><13,15>:[63,63,116,255]<7,16><13,19>|[106,190,48,255]<7,4><13,19>|0.5|[172,50,50,255]<2,8><6,12>:[217,87,99,255]<14,8><18,12>|[251,242,54,255]<8,4><15,9>:[55,148,110,255]<5,6><15,15>:[63,63,116,255]<5,16><15,19>|[106,190,48,255]<7,8><13,19>|0.25|[172,50,50,255]<8,0><12,6>:[217,87,99,255]<8,6><12,15>|[251,242,54,255]<7,0><13,5>:[55,148,110,255]<7,6><13,15>:[63,63,116,255]<7,16><13,19>|[106,190,48,255]<7,4><13,19>
 ```
 
+Each section is separated by a '|' and each box is separated by a ':'. Every 2D vector is marked with '<>' and every RGBA color code is surrounded by brackets. 
+
+Anatomy of an animation output:
+```
+Tag|durationInSecondsOfFirstFrame|HitboxesInFirstFrame|HurtboxesInFirstFrame|PushBoxesInFirstFrame|durationInSecondsOfSecondFrame...
+```
+
+Anatomy of a box output:
+```
+[RGBA color code]<Top Left Corner of Box><Bottom Right Corner of Box>
+```
 
 
 Constraints:
