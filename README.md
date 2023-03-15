@@ -32,3 +32,11 @@ Notes:
 + If a box's entire side is cut off by another box's side, the algorithm will assume that the missing side is shared with the overlapping side.
 + This does not append to the end of a file, it overwrites the file
 + File will be outputted wherever the sprite is currently saved to
+
+
+
+
+
+
+
+The Attached File Parser is a WIP, and will be elaborated on more post testing.
